@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+  resources :sessions, only:[:new, :create, :destroy]
+  get 'users/new'
+  
+  resources :users, only:[:new, :create]
+
   root 'contents#index'
   resources :contents do
     resources :comments, shallow: true
